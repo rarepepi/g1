@@ -3,8 +3,8 @@ package database
 import (
 	"fmt"
 	"log"
+	"os"
 
-	"github.com/rarepepi/g1/config"
 	"github.com/rarepepi/g1/internal/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -22,7 +22,7 @@ func ConnectDB() {
     }
 
     // Connection URL to connect to Postgres Database
-	dsn := config.Config("DATABASE_URL")
+	dsn := os.Getenv("DATABASE_URL")
  	
 	// Connect to the DB and initialize the DB variable
 	DB, err := gorm.Open(postgres.Open(dsn))
