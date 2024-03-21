@@ -28,6 +28,7 @@ WORKDIR /app
 # Expecting to copy go.mod and if present go.sum.
 COPY go.* ./
 RUN go mod download
+RUN go mod verify
 
 # Copy local code to the container image.
 COPY . ./
