@@ -10,7 +10,10 @@ import (
 // Config func to get env value
 func Config(key string) string {
     // load .env file
-    err := godotenv.Load("")
+    err := godotenv.Load(".env")
+
+    fmt.Println(err)
+
     if err != nil {
         fmt.Print("Error loading .env file")
     }
