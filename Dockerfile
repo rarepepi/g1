@@ -47,6 +47,9 @@ RUN set -x && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -
 # Copy the binary to the production image from the builder stage.
 COPY --from=builder /app/server /app/server
 
+# Make a .env file
+RUN echo "ENVIRO=PROD" > /app/.env
+
 # Run the web service on container startup.
 CMD ["/app/server"]
 

@@ -1,39 +1,44 @@
 package database
 
 import (
-	"fmt"
 	"log"
-	"os"
 
-	"github.com/rarepepi/g1/internal/model"
+	"github.com/rarepepi/g1/config"
+	"github.com/rarepepi/g1/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 )
 
-// Declare the variable for the database
-var DB *gorm.DB
+type Dbinstance struct {
+	Db *gorm.DB
+}
+
+var DB Dbinstance
 
 // ConnectDB connect to db
 func ConnectDB() {
-    var err error
-	fmt.Println("Connecting to Database")	
-    if err != nil {
-        log.Println("Idiot")
-    }
-
+	log.Println("🐵 Connecting to Database 🐵")	
+    
     // Connection URL to connect to Postgres Database
-	dsn := os.Getenv("DATABASE_URL")
+	dsn := config.Config("DATABASE_URL")
  	
 	// Connect to the DB and initialize the DB variable
-	DB, err := gorm.Open(postgres.Open(dsn))
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
+		Logger: logger.Default.LogMode(logger.Info),
+	})
 
 	if err != nil {
-		panic("failed to connect database")
+		log.Fatal("Failed to connect to database. \n", err)
 	}
 
-	fmt.Println("Connection Opened to Database")
+	log.Println("🐵 Connected to Database! 🐵")
+	db.Logger = logger.Default.LogMode(logger.Info)
 
-	// Migrate the database
-	DB.AutoMigrate(&model.Note{})
-	fmt.Println("Database Migrated")
+	log.Println("🐵 Running DB migrations... 🐵")
+	db.AutoMigrate(&models.Book{})
+
+	DB = Dbinstance{
+		Db: db,
+	}
 }
