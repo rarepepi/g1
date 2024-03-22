@@ -17,3 +17,11 @@ make build
 make run
 
 ```
+
+# Generate Docs
+
+```bash
+
+make generate-docs
+
+```
