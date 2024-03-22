@@ -53,7 +53,5 @@ RUN echo "ENVIRO=PROD" > /app/.env
 # Run the web service on container startup.
 CMD ["/app/server"]
 
-EXPOSE 80
-
 # [END run_helloworld_dockerfile]
 # [END cloudrun_helloworld_dockerfile]
