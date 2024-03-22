@@ -68,11 +68,11 @@ func main() {
 	})
 
 	// Set port to os env or default to 3000
-	port := fmt.Sprintf(":%s", "3000")
+	port := "3000"
 	if osPort := config.Config("PORT"); osPort != "" {
 		port = fmt.Sprintf(":%s", osPort)
 	}
 
     // Listen on PORT 3000
-	log.Fatal(app.Listen(port))
+	log.Fatal(app.Listen("0.0.0.0:" + port))
 }
