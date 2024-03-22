@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for g1-rp on 2024-03-21T05:21:39-04:00
+# fly.toml app configuration file generated for g1-go-api on 2024-03-22T00:40:02-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'g1-rp'
+app = 'g1-go-api'
 primary_region = 'ewr'
 
 [build]
