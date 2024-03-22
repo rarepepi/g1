@@ -1,11 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/swagger"
+	"github.com/rarepepi/g1/config"
 	"github.com/rarepepi/g1/database"
 	_ "github.com/rarepepi/g1/docs"
 	"github.com/rarepepi/g1/routes"
@@ -65,6 +67,12 @@ func main() {
 		return c.SendStatus(404) // => 404 "Not Found"
 	})
 
+	// Set port to os env or default to 3000
+	port := fmt.Sprintf(":%s", "3000")
+	if osPort := config.Config("PORT"); osPort != "" {
+		port = fmt.Sprintf(":%s", osPort)
+	}
+
     // Listen on PORT 3000
-	log.Fatal(app.Listen(":3000"))
+	log.Fatal(app.Listen(port))
 }
