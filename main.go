@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/gofiber/fiber/v2"
@@ -70,7 +69,7 @@ func main() {
 	// Set port to os env or default to 3000
 	port := "3000"
 	if osPort := config.Config("PORT"); osPort != "" {
-		port = fmt.Sprintf("%s", osPort)
+		port = osPort
 	}
 
     // Listen on PORT 3000
