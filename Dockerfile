@@ -14,4 +14,8 @@ RUN go mod download
 COPY . .
 
 # STEP 6
-RUN make run
+RUN make build
+
+EXPOSE 80
+
+ENTRYPOINT ["./main"]
