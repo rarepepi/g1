@@ -1,6 +1,0 @@
-# flyctl launch added from .gitignore
-**/.env
-
-**/server
-fly.toml
-results.bin
