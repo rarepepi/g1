@@ -14,7 +14,7 @@ RUN go mod download
 COPY . .
 
 # STEP 6
-RUN make build
+RUN go build -o main cmd/api/main.go
 
 EXPOSE 80
 
