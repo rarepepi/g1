@@ -1,5 +1,5 @@
 # STEP 1
-FROM golang:1.23.0-bookworm
+FROM 1.23.0-alpine3.20
 
 # STEP 2
 WORKDIR /app
