@@ -4,12 +4,9 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-  
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-  
-
 )
 
 func (s *Server) RegisterRoutes() http.Handler {
@@ -19,9 +16,6 @@ func (s *Server) RegisterRoutes() http.Handler {
 	r.Get("/", s.HelloWorldHandler)
   
 	r.Get("/health", s.healthHandler)
-  
-  
-  
 
 	return r
 }
