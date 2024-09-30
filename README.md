@@ -1,6 +1,6 @@
 # Project g1
 
-One Paragraph of project description goes here
+A Go REST API template
 
 ## Getting Started
 
